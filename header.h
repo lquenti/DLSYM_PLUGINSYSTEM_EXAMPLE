@@ -1,8 +1,8 @@
 #ifndef PLUGIN_API_HEADER
 #define PLUGIN_API_HEADER
 
-#include <cassert>
-#include <cstdio>
+#include <assert.h>
+#include <stdio.h>
 #ifdef __cplusplus
 extern "C" {
 #endif
@@ -27,10 +27,10 @@ static inline int validate_plugin(const struct Plugin *p) {
     return 0;
   }
   int valid = 1;
-  if (!p->init) { fprintf(stderr, "[validate_plugin] Missing symbol: 'init'\n"); valid = false; }
-  if (!p->bind) { fprintf(stderr, "[validate_plugin] Missing symbol: 'bind'\n"); valid = false; }
-  if (!p->destroy) { fprintf(stderr, "[validate_plugin] Missing symbol: 'destroy'\n"); valid = false; }
-  if (!p->foo) { fprintf(stderr, "[validate_plugin] Missing symbol: 'foo'\n"); valid = false; }
+  if (!p->init) { fprintf(stderr, "[validate_plugin] Missing symbol: 'init'\n"); valid = 0; }
+  if (!p->bind) { fprintf(stderr, "[validate_plugin] Missing symbol: 'bind'\n"); valid = 0; }
+  if (!p->destroy) { fprintf(stderr, "[validate_plugin] Missing symbol: 'destroy'\n"); valid = 0; }
+  if (!p->foo) { fprintf(stderr, "[validate_plugin] Missing symbol: 'foo'\n"); valid = 0; }
   return valid;
 }
 
