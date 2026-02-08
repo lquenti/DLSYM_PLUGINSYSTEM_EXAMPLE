@@ -18,7 +18,7 @@ struct Plugin {
 
 void *get_ctx();
 
-Plugin *get_plugin();
+struct Plugin *get_plugin();
 
 // Will be called by main, but feel free to also use for testing
 static inline int validate_plugin(const struct Plugin *p) {

@@ -8,7 +8,7 @@
 #include <utility>
 #include <vector>
 
-#include"header.h"
+#include "header.h"
 
 // https://www.learncpp.com/cpp-tutorial/non-type-template-parameters/
 template <typename T, auto fn>
@@ -17,6 +17,7 @@ using c_unique_ptr = std::unique_ptr<T, decltype([](T* ptr) { fn(ptr); })>;
 // deleters should return void
 using LibHandle = c_unique_ptr<void, [](void *handle){dlclose(handle);}>;
 
+// TODO write comment explaining reasoning
 class ArrowChainProxy {
   Plugin* m_api;
   public:
